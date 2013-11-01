@@ -37,5 +37,15 @@ class practice_controller extends base_controller{
 	# Run the command
 	echo DB::instance(DB_NAME)->query($q);
   }
+  public function test5(){
+	echo "test 5: php sql query";
+	$data = Array (
+				   'first_name' => 'Sam',
+				   'last_name' => 'Seaborn',
+				   'email' => 'seaborn@whitehouse.gov'
+				   );
+	$user_id = DB::instance(DB_NAME)->insert('users',$data);
+	echo 'Inserted a new row; resulting id: '.$user_id;
+  }
 }
 ?>

@@ -14,7 +14,7 @@ If you want a different default time format for this app, set it below
 */
 
 # What is the name of this app?
-	define('APP_NAME', 'Panovision');  
+	define('APP_NAME', 'p2.edgeofforever.net');  
 
 # When email is sent out from the server, where should it come from?
 # Ideally, this should match the domain name
@@ -43,5 +43,5 @@ A email designated to receive messages from the server. Examples:
 	//define('SMTP_PASSWORD', '');
 
 # For extra security, you might want to set different salts than what the core uses
-	//define('PASSWORD_SALT', '');
-	//define('TOKEN_SALT', '');
+	define('PASSWORD_SALT', 'lkfjasdjlj89*(*))0283joj22j##lfajg0)))jlkjalsjd209**]l');
+	define('TOKEN_SALT', 'wqioicoi@(-__99l21la9009(mlafk\\lkdafjlq.alsdjao28(ms;zmx');
