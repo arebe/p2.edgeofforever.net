@@ -37,6 +37,7 @@ class posts_controller extends base_controller{
 	// query based on followed users for those logged in
 	if(!$this->user):
 		$q = 'SELECT
+				posts.post_id,
 			    posts.content,
 				posts.created,
 	            posts.user_id AS post_user_id,
@@ -48,6 +49,7 @@ class posts_controller extends base_controller{
 				ORDER BY posts.created DESC';
 	 else:
 		$q = 'SELECT 
+				posts.post_id,
 			    posts.content,
 				posts.created,
 	            posts.user_id AS post_user_id,
@@ -107,6 +109,21 @@ class posts_controller extends base_controller{
 	$where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$user_id_followed;
 	DB::instance(DB_NAME)->delete('users_users', $where_condition);
 	Router::redirect("/posts/users");
+  }
+
+  public function view($post_id){
+	// display a page with a single post
+	// linked from index (posts) page
+	$this->template->content = View::instance('v_posts_view');
+	$this->template->title = "Blog post";
+	// query the db for the post's id
+	$q = 'SELECT *
+		FROM posts
+		WHERE post_id = '.$post_id;
+	$post = DB::instance(DB_NAME)->select_row($q);
+	// pass data to view
+	$this->template->content->post = $post;
+	echo $this->template;
   }
 
 }
