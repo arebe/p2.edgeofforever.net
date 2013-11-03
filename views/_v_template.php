@@ -21,11 +21,14 @@
    <?php if($user): ?>
 		<a href='/users/logout'>Log out</a>
 		<a href='/users/profile'>My Profile</a>
-   <?php else: ?>
+        <a href='/posts/add'>Add a Post</a>
+        <a href='/posts/users'>List of Users</a>
+  <?php else: ?>
 		<!-- Menu options for everyone else -->
 		<a href='/users/signup'>Sign up</a>
 		<a href='/users/login'>Log in</a>
-   <?php endif; ?>
+  <?php endif; ?>
+   <a href='/posts'>Panostream</a>
 </div>
 
 	<?php if (isset($content)) echo $content; ?>
