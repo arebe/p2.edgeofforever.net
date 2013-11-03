@@ -1,7 +1,7 @@
 <article>
-	<?php if(isset($post['photo_url'])): ?>
+ <?php if($post['photo_url'] != NULL): ?>
 		<div class="pano_photo">
-   <img src='<?=$post['photo_url']?>' width='500' alt='<?=$post['content']?>'>
+	    <a href='<?=$post['photo_url']?>'><img src='<?=$post['photo_url']?>' width='900' alt='<?=$post['content']?>' border=0></a>
 		</div>
     <?php else: ?>
 		<h3 class="no_photo">No photo for this post</h3>

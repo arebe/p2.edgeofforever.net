@@ -3,5 +3,9 @@
 	color: red;
 	}
 .pano_photo{
-	width: 500px;
+
 }	
+
+.no_photo{
+	color: grey;
+}
