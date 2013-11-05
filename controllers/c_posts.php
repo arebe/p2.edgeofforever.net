@@ -152,7 +152,7 @@ class posts_controller extends base_controller{
 
 	// Insert post content -- insert function sanitizes data
 	DB::instance(DB_NAME)->insert('comments', $_POST);
-	Router::redirect("/posts");
+	Router::redirect("/posts/view/".$post_id);
   }
 
 }
