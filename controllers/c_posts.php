@@ -28,8 +28,11 @@ class posts_controller extends base_controller{
 
 	// Insert post content -- insert function sanitizes data
 	DB::instance(DB_NAME)->insert('posts', $_POST);
-	echo "Your post has been added. <a href='/posts/add'>Add another.</a>";
+	Router::redirect("/posts");
   }
+
+
+
 
   public function index(){
 	// the View
@@ -122,7 +125,7 @@ class posts_controller extends base_controller{
 		FROM posts
 		WHERE post_id = '.$post_id;
 	$post = DB::instance(DB_NAME)->select_row($q);
-	// query db for comments
+	// query db for comments associated w post
 	$q = 'SELECT 
 			comments.comment_id,
 			comments.post_id,
@@ -140,8 +143,7 @@ class posts_controller extends base_controller{
 	$this->template->content->comments = $comments;
 	echo $this->template;
   }
-  // I'm putting these comment functions here instead of in a separate controller
-  // because they will be interacting with the post view only
+
   public function p_comment($post_id){
 	// Associate this comment with this post & user
 	$_POST['post_id'] = $post_id;
