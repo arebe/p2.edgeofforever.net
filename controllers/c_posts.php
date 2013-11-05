@@ -8,6 +8,7 @@ class posts_controller extends base_controller{
 	  }*/
   }
 
+
   public function add(){
 	if(!$this->user){
 	  die("Members only. <a href='/users/login'>Log in.</a>");
@@ -121,9 +122,37 @@ class posts_controller extends base_controller{
 		FROM posts
 		WHERE post_id = '.$post_id;
 	$post = DB::instance(DB_NAME)->select_row($q);
+	// query db for comments
+	$q = 'SELECT 
+			comments.comment_id,
+			comments.post_id,
+			comments.content,
+			comments.user_id AS comments_user_id, 
+			users.first_name,
+			users.last_name
+		FROM comments
+		INNER JOIN users
+			ON comments.user_id = users.user_id
+		WHERE comments.post_id = '.$post_id;
+	$comments = DB::instance(DB_NAME)->select_rows($q);
 	// pass data to view
 	$this->template->content->post = $post;
+	$this->template->content->comments = $comments;
 	echo $this->template;
+  }
+  // I'm putting these comment functions here instead of in a separate controller
+  // because they will be interacting with the post view only
+  public function p_comment($post_id){
+	// Associate this comment with this post & user
+	$_POST['post_id'] = $post_id;
+	$_POST['user_id'] = $this->user->user_id;
+
+	// Timestamp for creation and mod
+	$_POST['created'] = Time::now();
+
+	// Insert post content -- insert function sanitizes data
+	DB::instance(DB_NAME)->insert('comments', $_POST);
+	Router::redirect("/posts");
   }
 
 }

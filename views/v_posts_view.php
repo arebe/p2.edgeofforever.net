@@ -10,4 +10,25 @@
 	<time datetime="<?Time::display($post['created'],'Y-m-d G:i')?>">
 	   <?=Time::display($post['created'])?>
 	</time>
+<!-- View comments on the post -->
+<?php foreach($comments as $comment): ?>
+
+	<h1><?=$comment['first_name']?> <?=$comment['last_name']?> said:</h1>
+	<p><?=$comment['content']?></p>
+
+	<time datetime="<?Time::display($comment['created'],'Y-m-d G:i')?>">
+	   <?=Time::display($comment['created'])?>
+	</time>
+
+<?php endforeach; ?>
 </article>
+
+<!-- Add a new comment -->
+<form method='POST' action='/posts/p_comment/<?=$post['post_id']?>'>
+
+    <label for='content'>Comment:</label><br>
+    <textarea name='content' id='content'></textarea>
+    <br><br>
+    <input type='submit' value='Post comment'>
+
+</form> 
