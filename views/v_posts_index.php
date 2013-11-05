@@ -1,7 +1,3 @@
-<pre>
-   <?php print_r($posts); ?>
-</pre>
-
 <?php foreach($posts as $post): ?>
 <article>
 	<h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
