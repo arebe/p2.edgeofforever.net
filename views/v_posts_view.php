@@ -20,6 +20,12 @@
 	   <?=Time::display($comment['created'])?>
 	</time>
 
+	<!-- Delete comment if it belongs to logged-in user -->
+   <?php if($user_id == $comment['comment_user_id']): ?>
+	<form method='POST' action='/posts/p_comment_del/<?=$comment['comment_id']?>'>
+		<input type='submit' value='Delete comment'>
+	</form> 
+   <?php endif; ?>
 <?php endforeach; ?>
 </article>
 

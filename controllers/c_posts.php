@@ -130,7 +130,7 @@ class posts_controller extends base_controller{
 			comments.comment_id,
 			comments.post_id,
 			comments.content,
-			comments.user_id AS comments_user_id, 
+			comments.user_id AS comment_user_id, 
 			users.first_name,
 			users.last_name
 		FROM comments
@@ -141,6 +141,7 @@ class posts_controller extends base_controller{
 	// pass data to view
 	$this->template->content->post = $post;
 	$this->template->content->comments = $comments;
+	$this->template->content->user_id = $this->user->user_id;
 	echo $this->template;
   }
 
@@ -157,4 +158,16 @@ class posts_controller extends base_controller{
 	Router::redirect("/posts/view/".$post_id);
   }
 
+  public function p_comment_del($comment_id){
+	// query db for post id for comment (for redirection)
+	$q = 'SELECT
+			post_id
+		 FROM comments
+		 WHERE comment_id = '.$comment_id;
+	$post_id = DB::instance(DB_NAME)->select_field($q);
+	// delete comment
+	DB::instance(DB_NAME)->delete('comments', "WHERE comment_id = ".$comment_id);
+	// redirect to post
+	Router::redirect("/posts/view/".$post_id);
+  }
 }
