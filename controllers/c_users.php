@@ -21,6 +21,7 @@ class users_controller extends base_controller {
 	  $_POST['modified'] = Time::now();
 	  $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 	  $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
+	  $_POST['profile_pic'] = "/uploads/avatars/example.gif";
 	  $user_id = DB::instance(DB_NAME)->insert('users', $_POST);
 	  Router::redirect("/users/login");
     }
@@ -69,13 +70,29 @@ class users_controller extends base_controller {
 	  if(!$this->user){
 		Router::redirect('/users/login');
 	  }
+	  
+	  $profile_pic = new Image(APP_PATH.$this->user->profile_pic);
 	  $this->template->content = View::instance('v_users_profile');
 	  $this->template->title = "Profile of ".$this->user->first_name;
 	  echo $this->template;
-	  echo '<pre>';
-	  print_r($this->user);
-	  print_r($_COOKIE);
-	  echo'</pre>';
+	}
+	
+	public function edit(){
+	  if(!$this->user){
+		Router::redirect('/users/login');
+	  }
+	  $this->template->content = View::instance('v_users_edit');
+	  $this->template->title = "Edit profile";
+	  echo $this->template;
+	}
+
+	public function p_upload(){
+	  Upload::upload($_FILES, "/uploads/avatars/", array("jpg", "jpeg", "gif", "png"), "profile-".$this->user->user_id);
+	  $filename = $_FILES['upload']['name'];
+	  $extension = substr($filename, strrpos($filename, '.'));
+	  $data = Array("profile_pic" => "/uploads/avatars/profile-".$this->user->user_id.$extension);
+	  DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
+	  Router::redirect('/users/profile/'.$this->user->user_id);
 	}
 
 } # eoc
