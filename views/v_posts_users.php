@@ -1,4 +1,6 @@
 <?php foreach($users as $user): ?>
+	<!-- Show thumb of profile pic -->
+	<img src=<?=$user['profile_pic']?> width="30">
 
     <!-- Print this user's name -->
     <?=$user['first_name']?> <?=$user['last_name']?>
