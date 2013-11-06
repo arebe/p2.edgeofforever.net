@@ -101,7 +101,7 @@ article{
 /* Landing page */
 
 h4.landing{
-	margin: -2em auto 0.5em 3em;
+	margin: -0.6em auto 0.5em 3em;
 }
 
 article.landing{
@@ -144,7 +144,7 @@ div.posts_box{
 	background-color:#2b2834;
 	border: dotted #001A33  0.2px;
 	opacity:0.8;
-	filter:alpha(opacity=30); /* For IE8 and earlier */
+	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
 div.posts_box p, h1, time, form{
@@ -154,4 +154,32 @@ div.posts_box p, h1, time, form{
 div.posts_thumbnail{
 	float: right;
 	margin: auto 1.3em auto;
+}
+
+/* posts_view page */
+div.posts_comment h1{
+	font-size: 14pt;
+}
+
+div.posts_comment p, h1, form{
+	margin: auto 1em;
+}
+
+div.posts_view time{
+	float: right;
+	margin: 1em 1.5em;
+}
+
+span.comment_user{
+	color:  #bf8040;
+}
+
+div.comment_box{
+	width: 750px;
+	height: 100px;
+	margin:0 auto 1em auto; 
+	background-color:#2b2834;
+	border: dotted #001A33  0.2px;
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
