@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* css for the main app */
 header {
+	font-family: Verdana, Geneva, sans-serif;
 	padding-left: 10px;
 	padding-right: 25px;
 	padding-top: 1px;
@@ -9,12 +10,15 @@ header {
 	border-radius: 5px;
 	margin:0 auto 0 auto;
 	background:url('/images/subway_bg.jpg');
-	background-size: 900px 500px;
+	background-size: 900px 400px;
 }
-header h1, h2 {letter-spacing: 3px}
+header h1, h2 {
+	letter-spacing: 0.6em;
+	margin: 0.8em 0.2em;
+}
 body {
 	background-color: #2D2C30;
-	font-family: Tahoma;
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 	color: #C0C0C0;
 	width: 900px;
 	/* keeps everything in this tag centered in window */
@@ -33,6 +37,11 @@ footer {
 	border-radius: 5px;
 }
 
+time{
+	font-family: Monaco, Consolas, "Lucida Console", monospace;
+	font-size: 10pt;
+	color: grey;
+}
 
 /* LVHA */
 a:link {color: #6699CC; text-decoration: none}
@@ -41,6 +50,7 @@ a:hover {color:#7A3DB8}
 header a:hover{color: #6699CC}
 aside h3 {letter-spacing:normal}
 nav {
+	margin: 0.2em auto;
 	width: 900px;
 	backgroud-color: #000000;
 }
@@ -64,9 +74,9 @@ nav a:link, nav a:visited{
 	margin: 0 auto 0 auto;
 }
 nav a:hover {
-	color:#7A3DB8; 
-	background-color::#001A33;
-	border: solid #000000 2px;
+	color:#f3f1fa; 
+	background-color: #2b2834;
+	border: solid #2b2834 5px;
 	border-radius: 5px;
 }
 article{
@@ -88,6 +98,8 @@ article{
 	color: grey;
 }
 
+/* Landing page */
+
 h4.landing{
 	margin: -2em auto 0.5em 3em;
 }
@@ -95,6 +107,8 @@ h4.landing{
 article.landing{
 	background:url('/images/metro_bg.jpg');
 	background-size: 900px 600px;
+	width: 900px;
+	height: 300px;
 }
 
 div.welcomebox{
@@ -115,3 +129,29 @@ span.new{
 	color: red;
 }
 
+/* posts_index page */
+h1.posts_index{
+	font-size: 14pt;
+}
+
+span.post_user{
+	color:  #bf8040;
+}
+
+div.posts_box{
+	width: 900px;
+	height: 150px;
+	background-color:#2b2834;
+	border: dotted #001A33  0.2px;
+	opacity:0.8;
+	filter:alpha(opacity=30); /* For IE8 and earlier */
+}
+
+div.posts_box p, h1, time, form{
+	margin: 0.5em 1em;
+}
+
+div.posts_thumbnail{
+	float: right;
+	margin: auto 1.3em auto;
+}

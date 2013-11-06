@@ -28,7 +28,7 @@
    <?php endif; ?>
 <?php endforeach; ?>
 </article>
-
+   <?php if($user): ?>
 <!-- Add a new comment -->
 <form method='POST' action='/posts/p_comment/<?=$post['post_id']?>'>
 
@@ -38,3 +38,4 @@
     <input type='submit' value='Post comment'>
 
 </form> 
+   <?php endif; ?>
