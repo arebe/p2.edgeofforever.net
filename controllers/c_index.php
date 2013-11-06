@@ -16,10 +16,16 @@ class index_controller extends base_controller {
 		
 		# Any method that loads a view will commonly start with this
 		# First, set the content of the template with a view file
+		// if no user is logged in, go tolanding page
+		if(!$this->user):
+			$this->template->content = View::instance('v_index_landing');
+		else:
+			// if there's a logged in user, go to home page
 			$this->template->content = View::instance('v_index_index');
+	   	endif;
 			
 		# Now set the <title> tag
-			$this->template->title = "Hello World";
+			$this->template->title = "PanoBlog";
 	
 		# CSS/JS includes
 			/*
@@ -32,8 +38,6 @@ class index_controller extends base_controller {
 	      					     		
 		# Render the view
 			echo $this->template;
-		# Get and print the current timestamp
-		  echo Time::now();
 
 	} # End of method
 	

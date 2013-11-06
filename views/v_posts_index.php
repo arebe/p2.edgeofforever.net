@@ -1,4 +1,10 @@
 <?php foreach($posts as $post): ?>
+<style> 
+article{background:url('<?=$post['photo_url']?>');}
+</style>
+<pre>
+ <?php print_r($post['photo_url'];?>
+</pre>
 <article>
 	<h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
 	<p><?=$post['content']?></p>
@@ -13,3 +19,4 @@
 	</time>
 </article>
 <?php endforeach; ?>
+

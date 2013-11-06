@@ -31,9 +31,6 @@ class posts_controller extends base_controller{
 	Router::redirect("/posts");
   }
 
-
-
-
   public function index(){
 	// the View
 	$this->template->content = View::instance('v_posts_index');
@@ -43,6 +40,7 @@ class posts_controller extends base_controller{
 		$q = 'SELECT
 				posts.post_id,
 			    posts.content,
+				posts.photo_url,
 				posts.created,
 	            posts.user_id AS post_user_id,
 			    users.first_name,
@@ -55,6 +53,7 @@ class posts_controller extends base_controller{
 		$q = 'SELECT 
 				posts.post_id,
 			    posts.content,
+				posts.photo_url,
 				posts.created,
 	            posts.user_id AS post_user_id,
 		        users_users.user_id AS follower_id,
